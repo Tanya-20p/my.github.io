@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countries</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://unpkg.com/darkmode-js"></script>
+  
+</head>
+
+<body>
+
+  <style>
+* {
+    box-sizing: border-box;
+}
+
+/* body {
+    margin: 0;
+    font-family: Nunito, sans-serif;
+} */
+
+body {
+    --background-color: white;
+    --text-color: black;
+    --elements-color: white;
+    margin: 0;
+    font-family: Nunito, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+}
+
+body.dark {
+    --background-color: hsl(207, 26%, 17%); 
+    --text-color: white;
+    --elements-color: hsl(209, 23%, 22%);
+}
+
+header {
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.1);
+    background-color: var(--elements-color);
+}
+
+.hero {
+    height: 80px;
+    max-width: 1300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: auto;
+    padding-inline: 24px;
+}
+
+.heading {
+    font-weight: 800;
+
+}
+
+.mode {
+
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    font-weight: lighter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardSection {
+    flex-wrap: wrap;
+    gap: 55px;
+    min-height: 800px;
+    max-width: 1280px;
+    margin-inline: auto;
+    margin-block: 50px;
+    display: flex;
+
+}
+
+.card1 {
+    height: 350px;
+    width: 260px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-left: 10px;
+    box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.2 ease-in-out;
+     background-color: var(--elements-color);
+}
+
+.card1:hover {
+    transform: scale(1.03);
+}
+
+img {
+    height: 50%;
+    width: 100%;
+
+}
+
+.cardContent {
+    height: 35%;
+    width: 100%;
+    /* background-color: rgb(0, 255, 13); */
+    margin-block: 18px;
+    line-height: .8;
+    padding-inline: 18px;
+}
+
+.cardContent h4 {
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.2;
+}
+a{
+    text-decoration: none;
+    color: black;
+    color: inherit;
+}
+
+.search-filter-container {
+   max-width: 1250px;
+    margin-inline: auto;
+    margin-top: 16px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+ 
+}
+
+
+.search-container {
+    box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.15);
+    max-width: 350px;
+    width: 100%;
+    border-radius: 4px;
+    padding-left: 24px;
+    color: #999;
+    overflow: hidden;
+    background-color: var(--elements-color);
+    color: var(--text-color);
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    padding: 16px;
+    width: 90%;
+    background-color: inherit;
+    color: inherit;
+}
+
+.search-container input::placeholder {
+    color: #999;
+}
+
+.filter-by-region {
+    width: 250px;
+    padding: 16px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    background-color: var(--elements-color);
+    color: var(--text-color);
+}
+
+
+
+
+@media(max-width: 768px) {
+    .countries-container {
+        justify-content: center;
+    }
+
+    .heading {
+        font-size: 16px;
+    }
+
+    .mode p {
+        font-size: 12px;
+    }
+
+    .search-filter-container {
+        flex-direction: column;
+    }
+
+    @media (max-width:420px) {
+        .cardSection{
+            padding-left: 20px;
+        }
+
+        .search-container{
+            width:85%;
+            margin-left: 28px;
+        }
+        .filter-by-region{
+            margin-left: 28px;
+        }
+    }
+
+    
+    
+}
+
+
+
+/* Shimmer effect styles */
+.shimmer {
+    background: #e0e0e0;
+    border-radius: 8px;
+    height: 150px; /* Adjust height as needed */
+    width: 200px; /* Adjust width as needed */
+    position: relative;
+    overflow: hidden;
+    margin: 10px; /* Space between cards */
+}
+
+.shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0.2) 100%);
+    animation: shimmer 5s infinite;
+}
+
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+  </style>
+
+
+
+  <header>
+    <div class="hero">
+      <h2 class="heading">Where in the world?</h2>
+      <span class="mode">
+        <p class="theme-changer"> <i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Dark Mode</p>
+      </span>
+    </div>
+  </header>
+  <main>
+    <div class="search-filter-container">
+      <div class="search-container">
+        <i id="search-icon"class="fa-solid fa-magnifying-glass"></i>
+        <input class="search-bar" type="text" placeholder="Search for a country...">
+      </div>
+      <select class="filter-by-region">
+        <option value="default" hidden>Filter by Region</option>
+        <option value="Africa">Africa</option>
+        <option value="America">America</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+      </select>
+    </div>
+
+    <div class="countries-container"></div>
+  </main>
+  <div class="cardSection">
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+  </div>
+</body>
+<script>
+  
+let flag;
+let countriesData;
+const region = document.querySelector(".filter-by-region");
+console.log(region);
+const cardsec = document.querySelector(".cardSection");
+const whereheading = document.querySelector(".heading");
+
+
+cardsec.innerHTML = `
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+`;
+let search = document.querySelector(".search-bar");
+let mode = document.querySelector(".mode");
+let themeChanger = document.querySelector(".theme-changer");
+
+
+function flagContent(countryName) {
+  flag = document.createElement("a");
+  flag.setAttribute("href", `/m1.html?name=${countryName.name.common}`);
+  flag.innerHTML = ` <div class="card1">
+    <img src=${countryName.flags.svg} alt=${countryName.name.common} flag>
+ <div class="cardContent">
+<h4>${countryName.name.common}</h4>
+<p><b>Population: </b>${countryName.population.toLocaleString('en-IN')}</p>
+<p><b>Region: </b>${countryName.region}</p>
+ <p><b>Capital: </b>${countryName.capital[0]}</p>
+  </div>
+  </div>`;
+  cardsec.append(flag);
+}
+
+
+
+fetch('https://restcountries.com/v3.1/all')
+  .then((res) => res.json())
+  .then((data) => {
+    countriesData =data;
+    cardsec.innerHTML = '';
+    data.forEach(country => {
+      flagContent(country);
+    });
+  })
+  .catch((err) => console.log(err))
+
+
+
+region.addEventListener("change", (e) => {
+  cardsec.innerHTML = " ";
+  let reg = e.target.value;
+  fetch(`https://restcountries.com/v3.1/region/${reg}`)
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((elem) => {
+        flagContent(elem);
+      })
+      
+    });
+    e.target.value=" ";
+    e.target.value="default";
+})
+
+
+
+
+search.addEventListener("input",(e)=>{
+cardsec.innerHTML=" ";
+let filtered=  countriesData.filter((country)=>country.name.common.toLowerCase().includes(e.target.value.toLowerCase()));
+console.log(filtered);
+filtered.forEach(element => {
+flagContent(element);
+});
+})
+
+
+function updateButtonText(isDark) {
+  if (isDark) {
+      themeChanger.innerHTML = `<p class="theme-changer"><i class="fa-regular fa-sun"></i>&nbsp;&nbsp;Light Mode</p>`;
+  } else {
+      themeChanger.innerHTML = `<p class="theme-changer"><i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Dark Mode</p>`;
+  }
+}
+
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+  document.body.className = currentTheme;
+  updateButtonText(currentTheme === 'dark');
+}
+
+themeChanger.addEventListener('click', () => {
+// Toggle the dark class on the body
+const isDark = document.body.classList.toggle('dark');
+// Update the local storage with the current theme
+localStorage.setItem('theme', isDark ? 'dark' : 'light');
+// Update the button text based on the current theme
+updateButtonText(isDark);
+});
+
+
+
+whereheading.addEventListener("click",function(){
+  location.reload();
+});
+</script>
+
+</html>
